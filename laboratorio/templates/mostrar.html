@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<h1>Lista de Laboratorios</h1>
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <th>Ciudad</th>
+        <th>País</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    {% for laboratorio in laboratorios %}
+    <tr>
+        <td>{{ laboratorio.nombre }}</td>
+        <td>{{ laboratorio.ciudad }}</td>
+        <td>{{ laboratorio.pais }}</td>
+        <td>
+            <a href="{% url 'actualizar_laboratorio' laboratorio.id %}">Actualizar</a>
+        </td>
+        <td>
+            <a href="{% url 'eliminar_laboratorio' laboratorio.id %}">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
